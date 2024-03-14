@@ -1,0 +1,55 @@
+<%= render "shared/header_login" %>
+
+<div class="reservation-container">
+    <div class="reservation-index-title">
+        <h2>予約済み一覧</h2>
+    </div>
+
+    <div class="reservation-index-info">
+        <% @user_reservations.each do |reservation| %>
+            <div class="card mb-3" style="max-width: 800px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <% if reservation.room.image.file.present? %>
+                            <p><%= image_tag reservation.room.image.url, class:"reservation-room-img" %></p>
+                        <% else %>
+                            <p><%= image_tag "default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png",:size =>'250x150' %></p>
+                        <% end %>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <table>
+                                <tr>
+                                    <td width="150"><p>施設名</p></td>
+                                    <td><p><%= reservation.room.roomname %></p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>紹介文</p></td>
+                                    <td><p><%= reservation.room.introduce %></p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>合計料金</p></td>
+                                    <td><p><%= (reservation.checkout - reservation.checkin).to_i * reservation.room.price * reservation.count %>円</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>チェックイン</p></td>
+                                    <td><p><%= reservation.checkin.strftime('%Y/%m/%d') %></p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>チェックアウト</p></td>
+                                    <td><p><%= reservation.checkout.strftime('%Y/%m/%d') %></p></td>
+                                </tr>
+                                <tr>
+                                    <td><p>予約確定日時</p></td>
+                                    <td><p><%= reservation.created_at.to_s(:datetime_jp) %></p></td>
+                                </tr>
+                                
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

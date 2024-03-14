@@ -1,0 +1,49 @@
+<h1>施設予約ページ</h1>
+
+<%= render "shared/header_login" %>
+
+<%= render "shared/error", obj: @user %>
+
+<div class="create-user">
+    <div class="create-room-form">
+        <div class="create-user-title">
+            <h3>施設登録</h3>
+        </div>
+
+        <%= form_with model: @room do |f| %>
+            <div>
+                <h6><%= f.label :roomname ,"施設名" %><h6>
+                <%= f.text_field :roomname %>
+            </div>
+
+            <div>
+                <h6><%= f.label :address ,"住所" %><h6>
+                <%= f.text_field :address %>
+            </div>
+
+            <div>
+                <h6><%= f.label :introduce ,"施設詳細" %><h6>
+                <%= f.text_area :introduce %>
+            </div>
+
+            <div>
+                <h6><%= f.label :price ,"料金" %><h6>
+                <%= f.number_field :price %>
+            </div>
+
+            <div>
+                <h6><%= f.label :image ,"施設画像" %><h6>
+                <%= f.file_field :image %>
+            </div>
+
+            <div class="user-create-submit">
+                <%= f.submit "編集を完了する" , class:"btn btn-danger"%>
+            </div>
+
+        <% end %>
+
+        <div class="create-room-cancel">
+            <button type="button" class="btn btn-light">キャンセル</button>
+        </div>
+    </div>
+</div>

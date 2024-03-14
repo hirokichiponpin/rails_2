@@ -1,0 +1,28 @@
+<%= render "shared/header_login" %>
+
+<h2 class="rooms-count"> <%= @rooms.count %> 件が見つかりました</h2>
+
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <% @rooms.each do |room| %>
+      <div class="feature col">
+        <div class="room-item">
+            <div class="room-image-container">
+                <% if room.image.file.present? %>
+                    <p><%= image_tag room.image.url, class: "room-index-image" %></p>
+                <% else %>
+                    <p><%= image_tag "default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png", class: "room-index-image" %></p>
+                <% end %>
+            </div>
+            
+            <div class="room-index-info">
+                <h2><%= room.roomname %></h2>
+                <p><%= room.introduce %></p>
+                <p><strong>住所:</strong> <%= room.address %></p>
+                <p><strong>料金:</strong> <%= room.price %> 円</p>
+                <%= link_to "詳細を見る", room_path(room) %>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  

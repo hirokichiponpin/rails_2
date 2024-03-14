@@ -1,0 +1,48 @@
+<div class="account-container">
+
+    <div class="account-main">
+        <%= render "shared/mypage" %>
+
+        <h3 class="title-account">プロフィール</h3>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+        
+          <div class="account-info-email">
+            <p class="label-email">メールアドレス</p>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+        
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+        
+          <div class="account-info-email">
+            <p class="label-email">パスワード</p>
+            <%= f.password_field :password, autocomplete: "new-password" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %>文字以上で入力してください </em>
+            <% end %>
+          </div>
+        
+          <div class="account-info-email">
+            <p class="label-email">確認用パスワード</p>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+        
+          <div class="account-info-email">
+            <p class="label-email">現在のパスワード</p>
+            <%= f.password_field :current_password, autocomplete: "current-password" %>
+          </div>
+        
+          <div class="actions">
+            <%= f.submit "編集を完了する" %>
+          </div>
+        <% end %>
+
+
+    </div>
+</div>
+
+<%= link_to "Back", :back %>
