@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         @user = current_user
         if @user.update(params.require(:user).permit(:name, :introduce, :avatar))
             flash[:notice] = "ユーザーIDが「#{@user.id}」の情報を更新しました"
-            redirect_to root_path
+            redirect_to users_account_path(id: current_user.id)
         else
             render "edit"
         end

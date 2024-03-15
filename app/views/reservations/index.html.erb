@@ -1,5 +1,9 @@
 <%= render "shared/header_login" %>
 
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
 <div class="reservation-container">
     <div class="reservation-index-title">
         <h2>予約済み一覧</h2>

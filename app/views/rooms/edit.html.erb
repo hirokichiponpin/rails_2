@@ -2,7 +2,7 @@
 
 <%= render "shared/header_login" %>
 
-<%= render "shared/error", obj: @user %>
+<%= render "shared/error", obj: @room %>
 
 <div class="create-user">
     <div class="create-room-form">
@@ -43,7 +43,7 @@
         <% end %>
 
         <div class="create-room-cancel">
-            <button type="button" class="btn btn-light">キャンセル</button>
+            <%= link_to 'キャンセル', :back, class:"btn btn-light" %>
         </div>
     </div>
 </div>

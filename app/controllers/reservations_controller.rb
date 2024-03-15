@@ -11,7 +11,8 @@ class ReservationsController < ApplicationController
         if @reservation.valid?
             render "confirm"
         else
-            render controller: 'rooms', action: 'show'
+            @error_messages = @reservation.errors.full_messages
+            render "rooms/show"
         end
     end
 

@@ -1,5 +1,9 @@
 <%= render "shared/header_login" %>
 
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
 <div class="account-container">
 
     <div class="account-main">
