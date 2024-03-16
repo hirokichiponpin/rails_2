@@ -47,9 +47,4 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.1]
     raise ActiveRecord::IrreversibleMigration
   end
 
-  def change
-    remove_column :users, :password
-    remove_column :users, :passwordcheck
-    # 他の変更があれば追加
-  end
 end
