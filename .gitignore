@@ -16,9 +16,9 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-public/uploads/room/
-public/uploads/tmp/
-public/uploads/user/
+public/uploads/room
+public/uploads/tmp
+public/uploads/user
 
 
 # Ignore pidfiles, but keep the directory.
