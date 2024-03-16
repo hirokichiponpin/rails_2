@@ -1,0 +1,32 @@
+<%= render "shared/header_login" %>
+
+<div class="account-container">
+
+    <div class="account-main">
+        <%= render "shared/mypage" %>
+
+        <h3 class="title-account">プロフィール</h3>
+
+        <%= link_to "編集", edit_user_path(id: current_user.id) %>
+
+        <div class="account-info-email">
+            <p class="label-email">アイコン画像</p>
+            <% if @user.avatar.file.present? %>
+                <p class="result-email"><%= image_tag @user.avatar.url %></p>
+            <% else %>
+                <p class="result-email"><%= image_tag "default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" %></p>
+            <% end %>
+        </div>
+
+        <div class="account-info-password">
+            <p class="label-password">名前</p>
+            <p class="result-password"><%= @user.name %></p>
+        </div>
+
+        <div class="account-info-password">
+            <p class="label-password">自己紹介</p>
+            <p class="result-password"><%= @user.introduce %></p>
+        </div>
+
+    </div>
+</div>

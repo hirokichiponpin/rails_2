@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+
+    <div class="user-info">
+        <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <% if current_user.avatar.file.present? %>
+                    <%= image_tag current_user.avatar.url, size: "30x20" %>
+                <% else %>
+                    <%= image_tag "default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png", size: "20x20" %>
+                <% end %>
+                <%= current_user.name %>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"><%= link_to "マイページ", users_account_path(id: current_user.id) %></a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#"><%= link_to "施設を登録する", new_room_path %></a></a></li>
+                <li><a class="dropdown-item" href="#"><%= link_to "予約一覧", reservations_path %></li>
+                <li><a class="dropdown-item" href="#"><%= link_to "登録一覧", own_rooms_rooms_path %></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a></li>
+            </ul>
+        </div>
+    </div>
+
+<% else %>
+
+    <div class="header-login">
+        <%= link_to "ログイン" ,new_user_session_url , class:"btn btn-light" %>
+        <%= link_to "新規登録" ,new_user_registration_url , class:"btn btn-secondary" %>
+    </div>
+
+<% end %>

@@ -1,0 +1,50 @@
+<%= render "shared/header_login" %>
+
+<%= render "shared/error", obj: @reservation %>
+
+<div class="reservation-show">
+    <div class="reservation-confirm-container">
+        <div class="reservation-confirm-title">
+            <h2>予約内容の確認</h2>
+        </div>
+
+        <%= form_with model: @reservation, url: reservations_path, method: :post do |f| %>
+            <div class="reservation-conform-info">
+                <table width=400px class="reservation-confirm">
+                    <tr>
+                        <td><p>チェックイン</p></td>
+                        <td><p><%= @reservation.checkin %></p></td>
+                    </tr>
+                    <tr>
+                        <td><p>チェックアウト</p></td>
+                        <td><p><%= @reservation.checkout %></p></td>
+                    </tr>
+                    <tr>
+                        <td><p>日数</p></td>
+                        <td><p><%= (@reservation.checkout - @reservation.checkin).to_i %>日</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>人数</p></td>
+                        <td><p><%= @reservation.count %>人</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>お支払い金額</p></td>
+                        <td><p><%= (@reservation.checkout - @reservation.checkin).to_i * @room.price * @reservation.count %>円</p></td>
+                    </tr>
+                </table>
+
+                <%= f.hidden_field :checkin, value: @reservation.checkin %>
+                <%= f.hidden_field :checkout, value: @reservation.checkout %>
+                <%= f.hidden_field :count, value: @reservation.count %>
+                <%= f.hidden_field :user_id, value: @user.id %>
+                <%= f.hidden_field :room_id, value: @room.id %>
+            </div>
+          
+            <div class="submit-reservation">
+                <p>上記の内容でよろしければ「確定」ボタンを押してください</p>
+                <%= f.submit "予約を確定する", class: "btn btn-primary" %>
+            </div>
+        <% end %>
+
+    </div>
+</div>
