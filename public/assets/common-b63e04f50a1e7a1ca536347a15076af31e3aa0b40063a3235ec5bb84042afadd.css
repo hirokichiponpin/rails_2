@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* line 1, ../../../../../Webデザイン学習/potepan/potepan/potepancamp_Rails2/reservation_app/app/assets/stylesheets/common.scss.erb */
+header {
+  background-color: #CCFF00;
+  padding: 5px 10px;
+}
+
+/* line 6, ../../../../../Webデザイン学習/potepan/potepan/potepancamp_Rails2/reservation_app/app/assets/stylesheets/common.scss.erb */
+footer {
+  background-color: #CCFF00;
+  padding: 5px 10px;
+}
+
+/* line 11, ../../../../../Webデザイン学習/potepan/potepan/potepancamp_Rails2/reservation_app/app/assets/stylesheets/common.scss.erb */
+.footer-title {
+  margin: 0;
+}
+
+/* line 15, ../../../../../Webデザイン学習/potepan/potepan/potepancamp_Rails2/reservation_app/app/assets/stylesheets/common.scss.erb */
+.footer-copyrights {
+  margin: 0;
+}

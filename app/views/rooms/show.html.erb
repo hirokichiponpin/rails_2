@@ -1,0 +1,75 @@
+<%= render "shared/header_login" %>
+
+<%= link_to "<<戻る", :back %>
+
+<% if @error_messages.present? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @error_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="room-show">
+    <div class="room-show-main">
+        <div class="room-show-title">
+            <h2>施設情報</h2>
+        </div>
+
+        <div class="room-show-container">
+            <div class="room-image">
+                <% if @room.image.file.present? %>
+                    <p><%= image_tag @room.image.url, class:"room-show-image" %></p>
+                <% else %>
+                    <p><%= image_tag "default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png", class: "room-show-image" %></p>
+                <% end %>
+            </div>
+
+            <div class="room-info-container">
+                <div class="room-info">
+                    <div class="room-name-price">
+                        <p class="room-name"><%= @room.roomname %></p>
+                        <p class="room-price"><%= @room.price %>円〜</p>
+                    </div>
+
+                    <div class="room-address-text">
+                        <p class="room-address"><%= @room.address %></p>
+                        <p class="room-text"><%= @room.introduce %></p>
+                    </div>
+                </div>
+
+                <div class="room-reservation">
+                    <div class="reservatiton-form">
+                        <%= form_with model: @reservation, url: reservations_confirm_path, method: :post do |f| %>
+                            <table>
+                                <tr>
+                                    <th><%= f.label :checkin, "チェックイン" %></th>
+                                    <th><%= f.label :checkout, "チェックアウト" %></th>
+                                    <th><%= f.label :count, "人数" %></th>
+                                </tr>
+
+                                <tr>
+                                    <td><%= f.date_field :checkin, style: 'width: 160px;' %></td>
+                                    <td><%= f.date_field :checkout, style: 'width: 160px;' %></td>
+                                    <td><%= f.number_field :count, style: 'width: 70px;' %>人</td>
+                                </tr>
+                            </table>
+
+                            <%= f.hidden_field :user_id, value: @user.id %>
+                            <%= f.hidden_field :room_id, value: @room.id %>
+                            
+                            <div class="submit-reservation">
+                                <%= f.submit "上記の内容で予約する", class:"btn btn-danger" %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

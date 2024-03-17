@@ -1,0 +1,27 @@
+<%= render "shared/header_login" %>
+
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<div class="account-container">
+
+    <div class="account-main">
+        <%= render "shared/mypage" %>
+
+        <h3 class="title-account">アカウント</h3>
+
+        <%= link_to "編集", edit_user_registration_path(id: current_user.id) %>
+
+        <div class="account-info-email">
+            <p class="label-email">メールアドレス</p>
+            <p class="result-email"><%= @user.email %></p>
+        </div>
+
+        <div class="account-info-password">
+            <p class="label-password">パスワード</p>
+            <p class="result-password">※※※※※※※※※※※</p>
+        </div>
+
+    </div>
+</div>

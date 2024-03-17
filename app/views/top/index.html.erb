@@ -1,0 +1,62 @@
+<%= render "shared/header_login" %>
+
+<div class="main">
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary" style="background-image: url('<%= asset_path('top_main.jpg') %>'); background-size: cover;">
+        <div class="col-md-6 p-lg-5 mx-auto my-5">
+        <h1 class="display-3 fw-bold">宿泊予約.comで最高の旅を</h1>
+        <div class="serch-rooms">
+            <%= form_tag rooms_path, method: :get do %>
+                <%= text_field_tag :search, params[:search], placeholder: "フリーワード検索", class:"serch" %></br>
+                <%= submit_tag "検索", class:"btn btn-success" %>
+            <% end %>
+        </div>
+    
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    </div>
+</div>
+
+<div class="recommend">
+    <h3 class="recommend-title">おすすめのエリア</h3>
+
+    <div class="recommend-area">
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6" style="padding-top:5px;">
+                <%= link_to rooms_path(search: '東京', commit: '検索'), class: 'text-decoration-none' do %>
+                    <div class="p-5 rounded-3" style="height: 300px; background-image: url('<%= asset_path('tokyo.jpg') %>'); background-size: cover;">
+                        <h2 class="recommend-area-text">東京</h2>
+                    </div>
+                <% end %>
+            </div>
+        
+            <div class="col-md-6" style="padding-top:5px;">
+                <%= link_to rooms_path(search: '大阪', commit: '検索'), class: 'text-decoration-none' do %>
+                    <div class="p-5 rounded-3" style="height: 300px; background-image: url('<%= asset_path('osaka.jpg') %>'); background-size: cover;">
+                        <h2 class="recommend-area-text">大阪</h2>
+                    </div>
+                <% end %>
+
+            </div>
+        </div>
+
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6" style="padding-top:5px;">
+                <%= link_to rooms_path(search: '京都', commit: '検索'), class: 'text-decoration-none' do %>
+                    <div class="p-5 rounded-3" style="height: 300px; background-image: url('<%= asset_path('kyoto.jpg') %>'); background-size: cover;">
+                        <h2 class="recommend-area-text">京都</h2>
+                    </div>
+                <% end %>
+            </div>
+        
+            <div class="col-md-6" style="padding-top:5px;">
+                <%= link_to rooms_path(search: '札幌', commit: '検索'), class: 'text-decoration-none' do %>
+                    <div class="p-5 rounded-3" style="height: 300px; background-image: url('<%= asset_path('sapporo.jpg') %>'); background-size: cover;">
+                        <h2 class="recommend-area-text">札幌</h2>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+

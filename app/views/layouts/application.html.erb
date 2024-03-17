@@ -8,9 +8,19 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <%= link_to "宿泊予約.com" , root_path , class:"header-link" %>
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <h4 class="footer-title">宿泊予約.com</h4>
+      <p class="footer-copyrights">Copyright © 宿泊予約.com 2024 All rights reserved</p>
+    </footer>
   </body>
 </html>

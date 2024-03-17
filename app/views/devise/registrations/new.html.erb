@@ -1,0 +1,46 @@
+<%= render "shared/header_login" %>
+
+<div class="create-user">
+    <div class="create-user-form">
+        <div class="create-user-title">
+            <h3>新規登録</h3>
+        </div>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+        
+          <div class="account-info-email">
+            <p class="label-email">名前</p>
+            <%= f.text_field :name, autofocus: true %>
+          </div>
+        
+          <div class="account-info-email">
+            <p class="label-email">メールアドレス</p>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+        
+          <div class="account-info-email">
+            <p class="label-email">パスワード</p>
+            <%= f.password_field :password, autocomplete: "new-password" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
+            <% end %><br />
+          </div>
+        
+          <div class="account-info-email">
+            <p class="label-email">パスワード確認</p>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+        
+          <div class="actions submit-newuser">
+            <%= f.submit "新規作成" ,class:"btn btn-danger" %>
+          </div>
+        <% end %>
+
+        <div class="user-create-login">
+          <%= link_to "アカウントをお持ちの方はログイン" ,new_user_session_url , class:"btn btn-light" %>
+        </div>
+    </div>
+</div>
+
+

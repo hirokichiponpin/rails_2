@@ -1,0 +1,49 @@
+<%= render "shared/header_login" %>
+
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<h2>登録一覧</h2>
+
+<div class="reservation-index-info">
+<% @user_rooms.each do |room| %>
+    <div class="card mb-3" style="max-width: 800px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <% if room.image.file.present? %>
+                    <p><%= image_tag room.image.url, class:"reservation-room-img" %></p>
+                <% else %>
+                    <p><%= image_tag "default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png", class:"reservation-room-img" %></p>
+                <% end %>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td width="150"><p>施設名</p></td>
+                            <td><%= link_to room.roomname, room_path(room) %></td>
+                        </tr>
+                        <tr>
+                            <td><p>紹介文</p></td>
+                            <td><p><%= room.introduce %></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>料金</p></td>
+                            <td><p><%= room.price %>円</p></td>
+                        </tr>
+                        <tr>
+                            <td><p>作成日</p></td>
+                            <td><p><%= room.created_at.to_s(:datetime_jp) %></p></td>
+                        </tr>
+                        
+                        
+                    </table>
+                    <%= link_to "編集", [:edit, room] %>
+                    <%= link_to "削除",  room, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+</div>

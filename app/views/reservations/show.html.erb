@@ -1,0 +1,34 @@
+<%= render "shared/header_login" %>
+
+<div class="reservation-show">
+    <div class="reservation-confirm-container">
+        <div class="reservation-confirm-title">
+            <h2>予約内容の確認</h2>
+        </div>
+
+        <div class="reservation-conform-info">
+            <table width=400px class="reservation-confirm">
+                <tr>
+                    <td><p>チェックイン</p></td>
+                    <td><p><%= @reservation.checkin %></p></td>
+                </tr>
+                <tr>
+                    <td><p>チェックアウト</p></td>
+                    <td><p><%= @reservation.checkout %></p></td>
+                </tr>
+                <tr>
+                    <td><p>日数</p></td>
+                    <td><p><%= @reservation.checkout %></p></td>
+                </tr>
+                <tr>
+                    <td><p>人数</p></td>
+                    <td><p><%= @reservation.count %>人</p></td>
+                </tr>
+            </table>
+
+            <div class="submit-reservation">
+                <p>上記の内容でよろしければ「確定」ボタンを押してください</p>
+            </div>
+        </div>
+    </div>
+</div>
